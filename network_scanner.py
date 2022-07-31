@@ -7,6 +7,11 @@ def scan(ip):
     arp_request = scapy.ARP(pdst=ip)
     broadcast = scapy.Ether(dst='ff:ff:ff:ff:ff:ff')
     arp_request_broadcast = broadcast/arp_request
-    answered, unanswered = scapy.srp(arp_request_broadcast)
+    answered_list = scapy.srp(arp_request_broadcast, timeout=1)[0]
+
+    for answer in answered_list:
+        print(answer)
+        print('------------------')
+
 
 scan('10.0.2.1/24')
