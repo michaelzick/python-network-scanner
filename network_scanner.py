@@ -22,10 +22,14 @@ def get_answered_list(ip):
 
 def print_answered_list(ip):
     answered_list = get_answered_list(ip)
+    clients_list = []
 
     print('IP\t\tMAC Address\n----------------------------------')
     for answer in answered_list:
-        print(answer[1].psrc + '\t' + answer[1].hwsrc)
+        client_dict = {'ip': answer[1].psrc, 'mac': answer[1].hwsrc}
+        clients_list.append(client_dict)
+
+    print(clients_list)
 
 
 print_answered_list('10.0.2.1/24')
