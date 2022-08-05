@@ -16,6 +16,7 @@ def get_arguments():
 
 
 def get_arp_request(target):
+    scapy.ls(scapy.ARP())
     return scapy.ARP(pdst=target)
 
 
